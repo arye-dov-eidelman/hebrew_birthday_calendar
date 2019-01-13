@@ -58,7 +58,8 @@
 
 - users
   - OmniAuth stuff
-  - username
+  - name
+  - email
   - password-digest
 - calendars
   - title
@@ -67,12 +68,14 @@
   - user_id
   - calendar_id
   - access_level [view, edit, admin]
+- hebrew_dates
+  - day
+  - month
+  - is_adar_b
 - events
   - content
   - calendar_id
-  - year
-  - month_slug
-  - day
+  - hebrew_date_id
 
 ## Models
 
@@ -103,8 +106,12 @@ class CalendarUser
   belongs_to :user
 end
 
+class HebrewDate
+end
+
 class Event
   belongs_to :calendar
+  belongs_to :hebrew_date
 
   scope -> in_month(month_slug) => {}
   scope -> on_day(day) => {}
@@ -133,6 +140,16 @@ resources :calendars do
 end
 
 
+```
+
+## Used generators
+
+```bash
+rails g resource HebrewDate       day:integer        month:integer       is_adar_b:boolean
+rails g resource Calendar       title:string          slug:string
+rails g resource Event        content:string   calendar_id:integer  hebrew_date_id:integer
+rails g resource User            name:string         email:string
+rails g resource CalendarUser user_id:integer  calendar_id:integer    access_level:string
 ```
 
 ## Other
