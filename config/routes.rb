@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # resources :users
+  resources :users
   # resources :sessions, only: [:new, :create, :destroy]
   resources :calendars do
     # resources :calendars_users , except: [:show]
