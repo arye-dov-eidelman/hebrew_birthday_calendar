@@ -13,10 +13,9 @@
       - 🔸 users have a many to many relationship with calendars through calendar_users which includes the access_level attribute
 
 3. Your models must include reasonable validations for the simple attributes. You don't need to add every possible validation or duplicates, such as presence and a minimum length, but the models should defend against invalid data.
-    - 🔸 year is between 1-7000
-    - 🔸 month is a valid month-slug
-    - 🔸 day is between 1-30
-    - 🔸 calendar slug is unique
+    - 🔸 ✔ month is a valid month between 1-12
+    - 🔸 ✔ day is a valid day between 1-30
+    - 🔸 ✔ calendar slug is unique
     - 🔸 all required strings are > 0 characters after being striped (profile username, calendar title)
 
 4. You must include at least one class level ActiveRecord scope method. a. Your scope method must be chainable, meaning that you must use ActiveRecord Query methods within it (such as .where and .order) rather than native ruby methods (such as #find_all or #sort).
@@ -129,7 +128,7 @@ resources :calendars do
 
   resources :events, except: :delete # the delete button should be on the day view
 
-  # calendar#show sets current calendar and redirects to (or renders?) monthes/tishrei (or first month)
+  # calendar#show sets current calendar and redirects to (or renders?) months/tishrei (or first month)
   resources :months, only: :show do
     resources :events, only: :new
 
