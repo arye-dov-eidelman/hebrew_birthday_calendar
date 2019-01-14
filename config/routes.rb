@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :users
   # resources :sessions, only: [:new, :create, :destroy]
   resources :calendars do
-    # resources :calendars_users , except: [:show]
+    resources :users, except: [:show]
 
     resources :events, except: :delete # the delete button should be on the day view
 
