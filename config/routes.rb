@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root "other#home"
   resources :users
   # resources :sessions, only: [:new, :create, :destroy]
   resources :calendars do
@@ -6,7 +7,7 @@ Rails.application.routes.draw do
 
     resources :events, except: :delete # the delete button should be on the day view
 
-    # # calendar#show sets current calendar and redirects to (or renders?) months/tishrei (or first month)
+    # calendar#show sets current calendar and redirects to (or renders?) months/tishrei (or first month)
     resources :months, only: :show do
       resources :events, only: :new
 
