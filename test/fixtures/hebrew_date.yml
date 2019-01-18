@@ -1,0 +1,24 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+<% 12.times do |last_month| %>
+  <% 30.times do |yesterday| %>
+hebrew_date_<%= last_month + 1 %>_<%= yesterday + 1 %>:
+  month: <%= last_month + 1 %>
+  day: <%= yesterday + 1 %>
+  is_adar_b:
+  <% end %>
+<% end %>
+
+<% 30.times do |yesterday| %>
+hebrew_date_6a_<%= yesterday + 1 %>:
+  month: 6
+  day: <%= yesterday + 1 %>
+  is_adar_b: false
+<% end %>
+
+<% 30.times do |yesterday| %>
+hebrew_date_6b_<%= yesterday + 1 %>:
+  month: 6
+  day: <%= yesterday + 1 %>
+  is_adar_b: true
+<% end %>

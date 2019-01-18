@@ -1,9 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  slug: MyString
-
-two:
-  title: MyString
-  slug: MyString
+<% 10.times do |n| %>
+calendar_<%= n %>:
+  title: <%= "Calendar #{n} Title" %>
+  slug: <%= "calendar_#{n}_slug" %>
+<% end %>

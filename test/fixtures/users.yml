@@ -1,11 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  email: MyString
-  password_digest: MyString
 
-two:
-  name: MyString
-  email: MyString
-  password_digest: MyString
+<% 100.times do |n| %>
+user_<%= n %>:
+  name: <%= "user_#{n}_name" %>
+  email: <%= "user_#{n}_email@example.com" %>
+  # password: "password"
+  password_digest: "$2a$10$n7fDeju.OFMLXjMQt6kpb.swjmo39WvdIHuc9aDAERC6D586eMGhy"
+<% end %>

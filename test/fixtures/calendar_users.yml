@@ -1,11 +1,18 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user_id: 1
-  calendar_id: 1
-  access_level: MyString
+<%
+  @access_levels = ['admin', 'edit', 'view']
+  @level = 0
+  def next_level
+    "#{@access_levels[@level % 3]}"
+  end
+%>
 
-two:
-  user_id: 1
-  calendar_id: 1
-  access_level: MyString
+<% 10.times do |c| %>
+  <% 50.times.with_index(c) do |x, u| %>
+calendar_<%= c %>_user_<%= u %>:
+  calendar: calendar_<%= c %>
+  user: user_<%= u %>
+  access_level: <%= next_level %>
+  <% end %>
+<% end %>

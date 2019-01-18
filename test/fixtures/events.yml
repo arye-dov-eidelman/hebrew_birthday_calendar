@@ -1,13 +1,29 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  content: MyString
-  calendar_id: 1
-  hebrew_date_id: 1
+<%
+  @day = 1
+  @month = 1
+  @leap_year = false
+  @adars = ['', 'a', 'b']
+  @adar = 0
 
-two:
-  title: MyString
-  content: MyString
-  calendar_id: 1
-  hebrew_date_id: 1
+  def next_date
+    @day += 1
+    @month += 1
+    @leap_year = !@leap_year
+    if @leap_year
+      @adar += 1
+    end
+    "hebrew_date_#{@month}#{@adars[@adar % 3] if @leap_year && @month == 6}_#{@day}"
+  end
+%>
+
+<% 10.times do |c| %>
+  <% 100.times do |n| %>
+event_<% c %><%= n %>:
+  title: <%= "calendar_#{c}_event_#{n}_title" %>
+  content: <%= "calendar_#{c}_event_#{n}_content" %>
+  calendar: <% "calendar_#{c}" %>
+  hebrew_date: <%= next_date %>
+  <% end %>
+<% end %>
