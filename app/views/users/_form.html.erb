@@ -1,6 +1,5 @@
 <%= form_for @user, remote: false do |f| %>
   <% @user.errors.full_messages.each do |message| %>
-  <% puts "\n\n error: #{message} \n\n" %>
     <div class="error">
       <%= message %>
     </div>

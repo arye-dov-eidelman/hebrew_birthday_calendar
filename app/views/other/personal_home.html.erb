@@ -1,0 +1,10 @@
+<h2>Welcome <%= @user.name %></h2>
+
+<h3>Your Calendars:</h3>
+<%# display your calendars with the next event for each one %>
+
+
+<br>
+<br>
+<br>
+<%= link_to 'Log out', session_path, method: :delete %>

@@ -1,0 +1,25 @@
+
+<h2> Login </h2>
+<%= form_for @user, remote: false, url: sessions_path do |f| %>  
+  <div>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+  
+  <div>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div>
+    <%= f.submit "Login" %>
+  </div>
+<% end %>
+
+First time here? <%= link_to 'Sign Up', new_user_path %>
+
+<p>
+  Hate login pages? Try a
+  <%= link_to 'Password Manager', "https://medium.com/@mshelton/password-managers-for-beginners-d1f49866f80f" %>
+  for a more seamless online experience
+</p>

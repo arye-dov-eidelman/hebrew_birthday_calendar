@@ -149,6 +149,7 @@ rails g resource Calendar       title:string          slug:string
 rails g resource Event        content:string         title:string      calendar_id:integer  hebrew_date_id:integer
 rails g resource User            name:string         email:string  password_digest:string
 rails g resource CalendarUser user_id:integer  calendar_id:integer    access_level:string
+rails g controller Sessions
 ```
 
 ## Other

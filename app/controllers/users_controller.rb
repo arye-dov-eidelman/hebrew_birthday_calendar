@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_action :require_login, only: [:new, :create, :destroy]
+
   def index
     @users = User.all
   end
@@ -21,7 +23,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.save ? redirect_to(@user) : render(:new)
+    if @user.save
+      login
+      redirect_to(root_path)
+    else
+      render(:new)
+    end
   end
 
   def update
@@ -31,7 +38,12 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find_by(id: params[:id])
-    @user.destroy ? redirect_to(root_path) : render(:delete)
+    if @user.destroy
+      logout
+      redirect_to(root_path)
+    else
+      render(:delete)
+    end
   end
 
   private

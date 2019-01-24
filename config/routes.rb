@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root "other#home"
   resources :users
-  # resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions, only: [:new, :create]
+  match '/sessions', to: 'sessions#destroy', via: :delete, as: :session
   resources :calendars do
     resources :users, except: [:show]
 
